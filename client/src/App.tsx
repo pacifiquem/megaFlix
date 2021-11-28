@@ -5,6 +5,7 @@ import Welcome from './pages/welcome';
 import Signup from './pages/signup';
 import SignIn from './pages/signin';
 import WatchMovie from './pages/watchMoviePage';
+import './styles/responsiveness.css';
 
 const App:React.FC = () => {
   return (
