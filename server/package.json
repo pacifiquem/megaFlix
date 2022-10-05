@@ -2,12 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/server.js",
+    "dev" : "nodemon src/server.ts",
+    "build" : "tsc -p ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["movie app", "MegaFlix", "NetFlix"],
+  "author": "pacifiquem@github.com",
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.12",
