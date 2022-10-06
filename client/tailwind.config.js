@@ -13,7 +13,7 @@ module.exports = {
     },
 
     gap: {
-      "logo-sign":"70%"
+      "logo-sign":"68%"
     },
 
     extend: {},
