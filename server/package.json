@@ -5,17 +5,24 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev" : "nodemon src/server.ts",
-    "build" : "tsc -p ."
+    "dev": "nodemon src/server.ts",
+    "build": "tsc -p ."
   },
-  "keywords": ["movie app", "MegaFlix", "NetFlix"],
+  "keywords": [
+    "movie app",
+    "MegaFlix",
+    "NetFlix"
+  ],
   "author": "pacifiquem@github.com",
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/node": "^18.8.2",
+    "axios": "^1.0.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "helmet": "^6.0.0",
     "nodemon": "^2.0.20",
