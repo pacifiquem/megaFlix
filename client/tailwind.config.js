@@ -8,12 +8,12 @@ module.exports = {
     },
     
     height: {
-      "full":"95vh",
+      "full":"97vh",
       "semi-full" : "50%"
     },
 
     gap: {
-      "logo-sign":"65%"
+      "logo-sign":"70%"
     },
 
     extend: {},
