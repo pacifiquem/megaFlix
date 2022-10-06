@@ -1,11 +1,12 @@
 import React from 'react';
 
+import HomePage from './pages/home';
 
 
 const App:React.FC = () => {
   return (
     <div className="App">
-      <h1 className="font-sans font-black text-6xl">hello</h1>
+      <HomePage />
     </div>
   );
 }
