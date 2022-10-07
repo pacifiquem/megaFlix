@@ -3,7 +3,8 @@ import background from '../assets/images/background.png';
 import logo from '../assets/images/logo.png';
 import GetStarted from '../components/getStarted';
 import HomeDiscription from '../components/homeDiscription';
-import { EnjoyOnYourTv } from '../components/functionalities';
+import { EnjoyOnYourTv, DownloadToWatchOffline, WatchEveryWhere, ProfileForKids } from '../components/functionalities';
+import Faq from '../components/faq';
 
 
 const Home:React.FC = () => {
@@ -18,6 +19,10 @@ const Home:React.FC = () => {
                 <GetStarted />
             </div>
             <EnjoyOnYourTv />
+            <DownloadToWatchOffline />
+            <WatchEveryWhere />
+            <ProfileForKids />
+            <Faq />
         </div>
     );
 }
