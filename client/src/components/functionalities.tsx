@@ -1,5 +1,7 @@
 import React from "react";
 import tvImage from '../assets/images/tvImage.png';
+import watchTV from '../assets/images/watchTV.png';
+import kidsImage from '../assets/images/kidsImage.png';
 
 export const EnjoyOnYourTv:React.FC = () => {
     return (
@@ -10,12 +12,9 @@ export const EnjoyOnYourTv:React.FC = () => {
                     <h2 className="text-2xl font-normal my-3">Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</h2>
                 </div>
             </div>
-            <div className=" w-[50%] h-[100%] flex justify-center mt-5">
-                <div className=' w-[60%] h-[80%] relative'>
-                    <img src={tvImage} alt="tvImage" className="absolute z-10 w-[20vh] h-[100%]"/>
-                    <video muted loop autoPlay className="w-[100%] h-[110%]">
-                        <source src="http://127.0.0.1:5500/client/src/assets/images/tvVideo.m4v"/>
-                    </video>
+            <div className=" w-[50%] h-[100%] flex flex-row justify-center items-center">
+                <div className=' w-[70%] h-[70%]'>
+                    <img src={tvImage} alt="tvImage" />
                 </div>
             </div>
         </div>
@@ -30,11 +29,12 @@ export const DownloadToWatchOffline:React.FC = () => {
     return (
         <div className="w-[100vw] h-[60vh] border-b-8 border-[#272525] flex flex-row">
             <div className=" w-[50%] h-[100%] flex justify-center">
-                <div className=' w-[60%] h-[80%] mt-8 relative bg-slate-500'>
+                <div className=' w-[45%] h-[55%] mt-20'>
+                    <img src={watchTV} alt="watchTv" />
                 </div>
             </div>
             <div className=' w-[50%] h-[100%] flex items-center'>
-                <div className=" text-white w-[80%] ">
+                <div className=" text-white w-[70%] ">
                     <h1 className="mb-8 text-5xl font-semibold">Download your shows to watch offline.</h1>
                     <h2 className="text-2xl font-normal my-3">Save your favorites easily and always have something to watch.</h2>
                 </div>
@@ -65,7 +65,8 @@ export const ProfileForKids:React.FC = () => {
     return (
         <div className="w-[100vw] h-[60vh] border-b-8 border-[#272525] flex flex-row">
             <div className=" w-[50%] h-[100%] flex justify-center">
-                <div className=' w-[60%] h-[80%] mt-8 relative bg-slate-500'>
+                <div className=' w-[60%] h-[80%] mt-8'>
+                    <img src={kidsImage} alt="Kids TV" className=" mt-6"/>
                 </div>
             </div>
             <div className=' w-[50%] h-[100%] flex items-center'>
