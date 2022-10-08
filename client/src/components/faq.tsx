@@ -1,4 +1,5 @@
 import React,  {useRef} from 'react';
+import { AiOutlinePlus } from 'react-icons/ai'
 
 
 const Faq:React.FC = () => {
@@ -68,21 +69,21 @@ const Faq:React.FC = () => {
     return (
         <div>
             <h1 className='text-white my-16 font-semibold text-5xl text-center'>Frequently Asked Questions</h1>
-            <div className='w-[55vw] mx-auto'>
+            <div className='w-[55vw] mx-auto border-b-8 border-[#272525]'>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(1)}}>What is Netflix?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(1)}}>What is Netflix? <AiOutlinePlus className=' inline ml-[67%]'/> </button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden'  ref={discriptionRef_1}>
                         <h1 className='text-start'>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!</h1>
                     </div>
                 </div>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(2)}}>How much does Netflix cost?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(2)}}>How much does Netflix cost? <AiOutlinePlus className=' inline ml-[43%]'/></button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden' ref={discriptionRef_2}>
                         <h1 className='text-start'>Watch Metaflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from US$3.99 to US$11.99 a month. No extra costs, no contracts.</h1>
                     </div>
                 </div>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(3)}}>Where can I watch?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(3)}}>Where can I watch? <AiOutlinePlus className=' inline ml-[60%]'/></button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden' ref={discriptionRef_3}>
                         <h1 className='text-start'>
                             Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
@@ -91,7 +92,7 @@ const Faq:React.FC = () => {
                     </div>
                 </div>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(4)}}>How do I cancel?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(4)}}>How do I cancel?  <AiOutlinePlus className=' inline ml-[64%]'/></button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden' ref={discriptionRef_4}>
                         <h1 className='text-start'>
                             Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.
@@ -99,7 +100,7 @@ const Faq:React.FC = () => {
                     </div>
                 </div>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(5)}}>What can I watch on Netflix?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(5)}}>What can I watch on Netflix? <AiOutlinePlus className=' inline ml-[43%]'/></button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden' ref={discriptionRef_5}>
                         <h1 className='text-start'>
                         Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.
@@ -107,7 +108,7 @@ const Faq:React.FC = () => {
                     </div>
                 </div>
                 <div className='w-[100%] mb-2'>
-                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(6)}}>Is Netflix good for kids?</button>
+                    <button className='w-[100%] text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(6)}}>Is Netflix good for kids?  <AiOutlinePlus className=' inline ml-[52%]'/></button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden' ref={discriptionRef_6}>
                         <h1 className='text-start'>
                             The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.
