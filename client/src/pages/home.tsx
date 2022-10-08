@@ -5,6 +5,7 @@ import GetStarted from '../components/getStarted';
 import HomeDiscription from '../components/homeDiscription';
 import { EnjoyOnYourTv, DownloadToWatchOffline, WatchEveryWhere, ProfileForKids } from '../components/functionalities';
 import Faq from '../components/faq';
+import Footer from '../components/footer';
 
 
 const Home:React.FC = () => {
@@ -23,6 +24,7 @@ const Home:React.FC = () => {
             <WatchEveryWhere />
             <ProfileForKids />
             <Faq />
+            <Footer />
         </>
     );
 }
