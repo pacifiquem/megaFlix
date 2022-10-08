@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import HomePage from './pages/home';
+import Signup from './pages/signup';
 
 
 const App:React.FC = () => {
@@ -8,13 +9,13 @@ const App:React.FC = () => {
     <div className="App overflow-x-hidden">
       <BrowserRouter> 
             <Routes>
-              <Route path='/' index element={<HomePage />}></Route>
+              <Route path='/welcome' index element={<HomePage />} />
+              <Route path='/signup' index element={<Signup />} />
             </Routes>
       </BrowserRouter>
     </div>
   );
 }
-
 
 
 export default App;
