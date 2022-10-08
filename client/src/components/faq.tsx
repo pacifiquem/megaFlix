@@ -1,5 +1,6 @@
 import React,  {useRef} from 'react';
 import { AiOutlinePlus } from 'react-icons/ai'
+import GetStarted from './getStarted';
 
 
 const Faq:React.FC = () => {
@@ -106,9 +107,9 @@ const Faq:React.FC = () => {
     }
 
     return (
-        <div>
+        <div className=' my-12 border-b-8 border-[#272525] pb-20'>
             <h1 className='text-white my-16 font-semibold text-5xl text-center'>Frequently Asked Questions</h1>
-            <div className='w-[55vw] mx-auto border-b-8 border-[#272525]'>
+            <div className='w-[55vw] mx-auto mb-12'>
                 <div className='w-[100%] mb-2'>
                     <button className='w-[100%] relative text-white text-3xl font-normal text-left py-6 px-12 bg-[#363636] mb-[2px]' onClick={()=>{onClickHandler(1)}}>What is Netflix? <AiOutlinePlus className=' inline absolute right-12'/> </button>
                     <div className='w-[100%] p-9 font-normal text-2xl  bg-[#363636] text-white hidden'  ref={discriptionRef_1}>
@@ -156,6 +157,7 @@ const Faq:React.FC = () => {
                     </div>
                 </div>
             </div>
+            <GetStarted />
         </div>
     );
 }
