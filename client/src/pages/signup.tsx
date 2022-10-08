@@ -31,7 +31,7 @@ const Signup = () => {
                         <input type="password" placeholder='Password' required className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
                     </div>
                     <button type='submit' className=' bg-red-600 w-[100%] h-[15%] font-sans font-semibold text-white text-2xl rounded'>Sign Up</button>
-                    <p className='text-[#4e4e4e] mt-12 text-lg'>New To Netflix ? <span className='text-white'>Sign In</span></p>
+                    <p className='text-[#4e4e4e] mt-12 text-lg'>not New To Netflix ? <span className='text-white hover:cursor-pointer'>Sign In</span></p>
                     <p className='text-[#4e4e4e] mt-2'>This page is protected by reCAPTCHA to ensure you are not a bot .</p>
                 </form>
             </div>
