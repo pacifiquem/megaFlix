@@ -8,7 +8,7 @@ import Copyright from '../components/copyright';
 
 
 
-const SignIn = () => {
+const SignIn:React.FC = () => {
     return (
         <div className="container bg-cover w-full h-[100vh] p-8" style={{backgroundImage : `linear-gradient(to top,rgba(0,0,0,.6)0, rgba(0,0,0,.5)60%, rgba(0,0,0,.5)70%, rgba(0,0,0,.6)100%), url(${background})`}}>
         <img src={logo} alt="Megaflix logo" />

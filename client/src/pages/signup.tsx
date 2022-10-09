@@ -8,7 +8,7 @@ import Copyright from '../components/copyright';
 
 
 
-const Signup = () => {
+const Signup:React.FC = () => {
 
     const [password, setPassword] = useState('');
 
