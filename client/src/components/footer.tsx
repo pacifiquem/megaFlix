@@ -2,7 +2,7 @@ import React from 'react';
 import Copyright from './copyright';
 
 
-const Footer = () => {
+const Footer:React.FC = () => {
     return (
         <div>
             <div className='h-[40vh] w-full flex flex-row justify-center items-center'>
