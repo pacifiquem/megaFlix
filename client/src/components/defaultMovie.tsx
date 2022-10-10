@@ -10,7 +10,7 @@ interface props {
 
 const DefaultMovie:React.FC <props> = (props) => {
     return (
-        <div className='w-[60%] h-[50%] p-16 text-white'>
+        <div className='w-[60%] h-[50%] pt-8 px-16 text-white'>
             <h1 className='text-[4rem] font-semibold pt-16'>{props.name}</h1>
             <div  className='w-[70%] mb-8'>
                 <p className='text-xl font-normal mt-6 mb-4'>{props.discription}</p>
