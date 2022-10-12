@@ -1,12 +1,33 @@
-/* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Put, Delete, Req, Res } from '@nestjs/common';
-
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Req,
+  Res,
+  Body,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
+import { UsersService } from './users.service';
+import { newUserDTO, loginDTO } from './dtos/user.dto';
 
 @Controller('users')
 export class UsersController {
-    @Post()
-    async newUser(){
-        return 'all is well';
-    }
+  constructor(private readonly UsersServices: UsersService) {}
+
+  @Post()
+  async newUser(@Body() usersCredentials: newUserDTO) {
+    return this.UsersServices.addnewuser(usersCredentials);
+  }
+
+  @Get()
+  async getMe() {
+    return 'a';
+  }
+
+  @Post()
+  async login(@Body() usersCredentials: loginDTO) {
+    console.log(usersCredentials);
+  }
 }
