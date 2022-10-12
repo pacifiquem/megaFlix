@@ -21,7 +21,7 @@ export class UsersController {
     return this.UsersServices.addnewuser(usersCredentials);
   }
 
-  @Get()
+  @Post('/login')
   async login(@Body() usersCredentials: loginDTO, @Res() response: Response) {
     const token = await this.UsersServices.login(usersCredentials);
     response.cookie('token', token.data);
@@ -30,5 +30,10 @@ export class UsersController {
       success: true,
       data: token,
     });
+  }
+
+  @Get('/email')
+  async isSignedUp(@Body() usersCredentials: string) {
+    return this.UsersServices.getUserbyEmail(usersCredentials);
   }
 }
