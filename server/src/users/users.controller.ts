@@ -8,7 +8,7 @@ import {
   Res,
   Body,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Request, response, Response } from 'express';
 import { UsersService } from './users.service';
 import { newUserDTO, loginDTO } from './dtos/user.dto';
 
@@ -22,12 +22,13 @@ export class UsersController {
   }
 
   @Get()
-  async getMe() {
-    return 'a';
-  }
+  async login(@Body() usersCredentials: loginDTO, @Res() response: Response) {
+    const token = await this.UsersServices.login(usersCredentials);
+    response.cookie('token', token.data);
 
-  @Post()
-  async login(@Body() usersCredentials: loginDTO) {
-    console.log(usersCredentials);
+    response.json({
+      success: true,
+      data: token,
+    });
   }
 }

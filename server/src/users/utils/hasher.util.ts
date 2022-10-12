@@ -10,9 +10,9 @@ const hasher = async (string: string | number): Promise<string | number> => {
 
 const comparer = async (
   string: string | number,
-  hashedString: string,
+  hashedString: string | number,
 ): Promise<boolean> => {
-  return await bcrypt.compare(`${string}`, hashedString);
+  return await bcrypt.compare(`${string}`, `${hashedString}`);
 };
 
 const hash = {
