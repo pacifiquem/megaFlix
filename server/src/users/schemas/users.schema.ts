@@ -6,8 +6,8 @@ export const UsersSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: false,
-    maxLength: 4,
-    minLength: 20,
+    maxLength: 20,
+    minLength: 4,
   },
 
   email: {
@@ -21,15 +21,8 @@ export const UsersSchema = new mongoose.Schema({
     required: true,
   },
 
-  Country: {
-    type: String,
-    required: false,
-    unique: false
-  },
-
   joinedAt: {
     type: Date,
-    default: new Date()
-  }
-
+    default: new Date(),
+  },
 });
