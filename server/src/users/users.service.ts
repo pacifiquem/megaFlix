@@ -1,4 +1,4 @@
-import { Injectable, Res } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { loginDTO, newUserDTO, updatePassword } from './dtos/user.dto';
@@ -6,7 +6,6 @@ import { HttpService } from '@nestjs/axios/dist';
 import hash from './utils/hasher.util';
 import jwtFunctions from './utils/jwt_token_generator.util';
 import cryptoHasher from './utils/cryptoHasher.util';
-import * as crypto from 'crypto';
 
 @Injectable()
 export class UsersService {
@@ -126,7 +125,6 @@ export class UsersService {
         };
       }
     } catch (error) {
-      console.log(error);
       return {
         success: false,
         message: error.message,
@@ -145,6 +143,7 @@ export class UsersService {
 
       if (user) {
         user.password = await hash.hasher(usersCredentials.password);
+        user.resetPasswordToken = '';
         await user.save();
 
         return {
@@ -161,7 +160,6 @@ export class UsersService {
         };
       }
     } catch (error) {
-      console.log(error);
       return {
         success: false,
         message: error.message,
