@@ -19,7 +19,7 @@ const jwtTokenGenerator = (data: Data): string => {
 };
 
 const jwtValidator = (token: string): string | jwt.JwtPayload => {
-  const decoded = jwt.verify(token, `${process.env.JWT_EXPIRES_IN}`);
+  const decoded = jwt.verify(token, `${process.env.JWT_PRIVATE_KEY}`);
   return decoded;
 };
 
