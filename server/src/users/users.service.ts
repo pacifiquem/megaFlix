@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { loginDTO, newUserDTO, updatePassword } from './dtos/user.dto';
+import {
+  getUserbyEmailDTO,
+  loginDTO,
+  newUserDTO,
+  updatePassword,
+} from './dtos/user.dto';
 import { HttpService } from '@nestjs/axios/dist';
 import hash from './utils/hasher.util';
 import jwtFunctions from './utils/jwt_token_generator.util';
@@ -84,10 +89,10 @@ export class UsersService {
     }
   }
 
-  async getUserbyEmail(email: string) {
+  async getUserbyEmail(usersCredentials: getUserbyEmailDTO) {
     try {
       const user = await this.UserModel.findOne({
-        email,
+        email: usersCredentials.email,
       });
 
       if (user) {

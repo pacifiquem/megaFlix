@@ -7,6 +7,7 @@ import {
   getResetPasswordToken,
   updatePassword,
   updatePasswordParams,
+  getUserbyEmailDTO,
 } from './dtos/user.dto';
 
 @Controller('users')
@@ -30,7 +31,7 @@ export class UsersController {
   }
 
   @Get('/issignedup')
-  async isSignedUp(@Body() usersCredentials: string) {
+  async isSignedUp(@Body() usersCredentials: getUserbyEmailDTO) {
     return this.UsersServices.getUserbyEmail(usersCredentials);
   }
 
