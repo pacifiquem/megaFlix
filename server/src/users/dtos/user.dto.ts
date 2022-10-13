@@ -22,3 +22,7 @@ export interface updatePassword {
 export interface updatePasswordParams {
   readonly token: string;
 }
+
+export interface getUserbyEmailDTO {
+  readonly email: string;
+}
