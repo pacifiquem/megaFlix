@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Param, Res, Body } from '@nestjs/common';
-import { Request, response, Response } from 'express';
+import { Response } from 'express';
 import { UsersService } from './users.service';
 import {
   newUserDTO,
@@ -13,7 +13,7 @@ import {
 export class UsersController {
   constructor(private readonly UsersServices: UsersService) {}
 
-  @Post()
+  @Post('/signup')
   async newUser(@Body() usersCredentials: newUserDTO) {
     return this.UsersServices.addnewuser(usersCredentials);
   }
