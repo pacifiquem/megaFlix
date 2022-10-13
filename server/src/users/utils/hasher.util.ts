@@ -1,6 +1,14 @@
 import * as bcrypt from 'bcrypt';
 
-const hasher = async (string: string | number): Promise<string | number> => {
+const hasher = async (string: string | number): Promise<string> => {
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hashedString = await bcrypt.hash(`${string}`, salt);
+
+  return hashedString;
+};
+
+const cryptoHasher = async (string: Buffer): Promise<string> => {
   const saltRounds = 10;
   const salt = await bcrypt.genSalt(saltRounds);
   const hashedString = await bcrypt.hash(`${string}`, salt);
@@ -18,6 +26,7 @@ const comparer = async (
 const hash = {
   hasher,
   comparer,
+  cryptoHasher,
 };
 
 export default hash;

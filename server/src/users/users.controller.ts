@@ -1,16 +1,13 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  Delete,
-  Req,
-  Res,
-  Body,
-} from '@nestjs/common';
+import { Controller, Get, Post, Put, Param, Res, Body } from '@nestjs/common';
 import { Request, response, Response } from 'express';
 import { UsersService } from './users.service';
-import { newUserDTO, loginDTO } from './dtos/user.dto';
+import {
+  newUserDTO,
+  loginDTO,
+  getResetPasswordToken,
+  updatePassword,
+  updatePasswordParams,
+} from './dtos/user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -32,8 +29,22 @@ export class UsersController {
     });
   }
 
-  @Get('/email')
+  @Get('/issignedup')
   async isSignedUp(@Body() usersCredentials: string) {
     return this.UsersServices.getUserbyEmail(usersCredentials);
+  }
+
+  @Get('/reset/password/gettoken')
+  async getResetPasswordToken(@Body() usersCredentials: getResetPasswordToken) {
+    return this.UsersServices.getPasswordtoken(usersCredentials.email);
+  }
+
+  @Put('/reset/password/token/:token')
+  async updatePassword(
+    @Body() reqBody: updatePassword,
+    @Param() token: updatePasswordParams,
+  ) {
+    reqBody.token = token.token;
+    return this.UsersServices.updatePassword(reqBody);
   }
 }

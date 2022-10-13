@@ -21,6 +21,12 @@ export const UsersSchema = new mongoose.Schema({
     required: true,
   },
 
+  resetPasswordToken: {
+    type: String,
+    required: false,
+    default: null,
+  },
+
   joinedAt: {
     type: Date,
     default: new Date(),

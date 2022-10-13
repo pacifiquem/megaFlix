@@ -1,10 +1,12 @@
 import { Injectable, Res } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { loginDTO, newUserDTO } from './dtos/user.dto';
+import { loginDTO, newUserDTO, updatePassword } from './dtos/user.dto';
 import { HttpService } from '@nestjs/axios/dist';
 import hash from './utils/hasher.util';
 import jwtFunctions from './utils/jwt_token_generator.util';
+import cryptoHasher from './utils/cryptoHasher.util';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class UsersService {
@@ -97,6 +99,72 @@ export class UsersService {
       return {
         success: false,
         message: 'user not found',
+      };
+    }
+  }
+
+  async getPasswordtoken(usersCredentials: string) {
+    try {
+      const user = await this.UserModel.findOne({
+        email: usersCredentials,
+      });
+
+      if (user) {
+        const resetPasswordToken = await cryptoHasher.generateBuffer();
+        user.resetPasswordToken = await cryptoHasher.encryptData(
+          resetPasswordToken,
+        );
+        await user.save();
+        return {
+          success: true,
+          data: resetPasswordToken,
+        };
+      } else {
+        return {
+          success: false,
+          message: 'invalid email',
+        };
+      }
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
+  }
+
+  async updatePassword(usersCredentials: updatePassword) {
+    try {
+      const resetPasswordToken = await cryptoHasher.encryptData(
+        usersCredentials.token,
+      );
+      const user = await this.UserModel.findOne({
+        resetPasswordToken,
+      });
+
+      if (user) {
+        user.password = await hash.hasher(usersCredentials.password);
+        await user.save();
+
+        return {
+          success: true,
+          data: {
+            message: 'password updated',
+            user: user.username,
+          },
+        };
+      } else {
+        return {
+          success: false,
+          message: 'user not found',
+        };
+      }
+    } catch (error) {
+      console.log(error);
+      return {
+        success: false,
+        message: error.message,
       };
     }
   }
