@@ -85,19 +85,26 @@ export class UsersService {
   }
 
   async getUserbyEmail(email: string) {
-    const user = await this.UserModel.findOne({
-      email,
-    });
+    try {
+      const user = await this.UserModel.findOne({
+        email,
+      });
 
-    if (user) {
-      return {
-        success: true,
-        data: user.email,
-      };
-    } else {
+      if (user) {
+        return {
+          success: true,
+          data: user.email,
+        };
+      } else {
+        return {
+          success: false,
+          message: 'user not found',
+        };
+      }
+    } catch (error) {
       return {
         success: false,
-        message: 'user not found',
+        message: error.message,
       };
     }
   }
