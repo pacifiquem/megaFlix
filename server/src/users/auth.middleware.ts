@@ -7,18 +7,25 @@ import jwtFunctions from './utils/jwt_token_generator.util';
 @Injectable()
 export class authMiddleware implements NestMiddleware {
   use(req: jwtDTO, res: Response, next: NextFunction) {
-    if (req.cookies.token) {
-      const token = req.cookies.token;
-      // eslint-disable-next-line prettier/prettier
-      const tokensCredential: JwtPayload | string =
-        jwtFunctions.jwtValidator(token);
-      req.user = tokensCredential;
+    try {
+      if (req.cookies.token) {
+        const token = req.cookies.token;
+        // eslint-disable-next-line prettier/prettier
+        const tokensCredential: JwtPayload | string =
+          jwtFunctions.jwtValidator(token);
+        req.user = tokensCredential;
 
-      next();
-    } else {
+        next();
+      } else {
+        res.json({
+          successful: false,
+          message: 'you are not authorized to access this route',
+        });
+      }
+    } catch (error) {
       res.json({
-        successful: false,
-        message: 'you are not authorized to access this route',
+        success: false,
+        message: error.message,
       });
     }
   }
