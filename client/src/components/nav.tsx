@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png';
 
 const Nav:React.FC = () => {
     return(
-        <div className="flex flex-row gap-[5%] h-[8vh] px-16 justify-start items-center bg-[#3f3f3f3a] sticky top-0">
+        <div className="flex flex-row gap-[5%] h-[8vh] px-16 justify-start items-center bg-[#ffffff00] sticky top-0 z-10">
              <img src={logo} alt="Megaflix logo" className='hover:cursor-pointer w-[8%] h-[70%]' onClick={() => {window.location.href='https://atmegaflix.vercel.app/welcome'}}/>
              <div className="text-white flex flex-row gap-[4%] w-[35%] font-medium text-xl">
                 <div className="flex justify-center items-center hover:cursor-pointer hover:text-red-500 hover:underline">Home</div>

@@ -4,7 +4,7 @@ const movies:React.FC = () => {
 
     return (    
         <div>
-
+            
         </div>
     );
 
