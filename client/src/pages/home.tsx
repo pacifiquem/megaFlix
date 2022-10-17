@@ -1,5 +1,6 @@
 import Nav from '../components/nav';
 import DefaultMovie from '../components/defaultMovie';
+import Movies from '../components/movies';
 
 
 const Home:React.FC = () => {
@@ -8,6 +9,7 @@ const Home:React.FC = () => {
         <div>
             <Nav />
             <DefaultMovie />
+            <Movies />
         </div>
     );
 }
