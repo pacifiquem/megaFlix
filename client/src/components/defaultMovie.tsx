@@ -18,7 +18,8 @@ const DefaultMovie:React.FC = () => {
 
     useEffect(() => {
         const movies = axios.get(MovieRequests[MovieRandomIndex]).then((response) => {
-            setName(response.data.results[randomNumber].title);
+            response.data.results[randomNumber].title ? setName(response.data.results[randomNumber].title) : setName(response.data.results[randomNumber].name);
+            console.log(response.data.results[randomNumber]);
             setOverview(response.data.results[randomNumber].overview);
             setImageUrl(`https://image.tmdb.org/t/p/original${response.data.results[randomNumber].backdrop_path}`);
         }).catch((error) => {
@@ -33,8 +34,8 @@ const DefaultMovie:React.FC = () => {
             <div  className='w-[45%] mb-12'>
                 <p className='text-xl font-normal mt-6 mb-4'>{overview}</p>
             </div>
-            <button className='w-[14%] bg-[#4c4848a0] hover:bg-[#b3b3b3af] px-2 py-3 mb-12 text-2xl rounded'><FaPlay className='inline mr-2'/> Play</button>
-            <button className='w-[14%] bg-[#b3b3b3af] hover:bg-[#4c4848a0] px-2 py-3 mb-12 text-2xl ml-12 rounded'><BsInfoCircle className='inline mr-2'/> More Info </button>
+            <button className='w-[14%] bg-[#4c4848cf] hover:bg-[#3b393998] px-2 py-3 mb-12 text-2xl rounded'><FaPlay className='inline mr-2'/> Play</button>
+            <button className='w-[14%] bg-[#b3b3b3dd] hover:bg-[#2a2828d0] px-2 py-3 mb-12 text-2xl ml-12 rounded'><BsInfoCircle className='inline mr-2'/> More Info </button>
         </div>
     );
 }
