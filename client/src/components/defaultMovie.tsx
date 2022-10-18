@@ -3,7 +3,7 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { FaPlay } from 'react-icons/fa';
 import  {useState, useEffect} from 'react';
 import axios from 'axios';
-import { MovieRequests } from '../utils/fetchMovies';
+import { MovieRequests } from '../utils/MoviesUrls.util';
 
 
 
@@ -19,7 +19,6 @@ const DefaultMovie:React.FC = () => {
     useEffect(() => {
         const movies = axios.get(MovieRequests[MovieRandomIndex]).then((response) => {
             response.data.results[randomNumber].title ? setName(response.data.results[randomNumber].title) : setName(response.data.results[randomNumber].name);
-            console.log(response.data.results[randomNumber]);
             setOverview(response.data.results[randomNumber].overview);
             setImageUrl(`https://image.tmdb.org/t/p/original${response.data.results[randomNumber].backdrop_path}`);
         }).catch((error) => {
