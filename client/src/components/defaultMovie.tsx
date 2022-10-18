@@ -13,7 +13,7 @@ const DefaultMovie:React.FC = () => {
     const [name, setName] = useState('');
     const [overview, setOverview] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const [randomNumber, setRandomNumber]  = useState(Math.floor(Math.random() * 11));
+    const [randomNumber, setRandomNumber]  = useState(Math.floor(Math.random() * (20 - 0) + 0));
     const [MovieRandomIndex, setMovieRandomIndex] = useState(Math.floor(Math.random() * (2 - 0) + 0));
 
     useEffect(() => {
