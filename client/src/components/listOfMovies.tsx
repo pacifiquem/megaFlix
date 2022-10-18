@@ -3,12 +3,13 @@ import React from 'react';
 
 interface props {
     imageUrl: string,
-    iframeUrl: string,
+    id:Number,
 }
 
 const ListOfMovies:React.FC <props> = (props) => {
+    console.log(props);
     return (
-        <div className='w-[21vw] h-[21vh] hover:w-[22vw] hover:h-[21.5vh] rounded' style={{backgroundImage: `url(${props.imageUrl})`, backgroundSize: `100% 100%`}}>
+        <div className='w-[20%] h-[20vh] hover:w-[21%] hover:h-[21.5vh] hover:cursor-pointer rounded' style={{backgroundImage: `url(https://image.tmdb.org/t/p/original${props.imageUrl})`, backgroundSize: `100% 100%`}}>
         </div>
     )
 }
