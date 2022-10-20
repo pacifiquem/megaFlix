@@ -7,7 +7,7 @@ import { Logger } from 'nestjs-pino';
 
 async function megaflixServerServicesProvider() {
   const app = await NestFactory.create(AppModule, {
-    cors: { origin: 'https://atmegaflix.vercel.app' },
+    cors: { origin: 'localhost:3000' },
     bufferLogs: true,
   });
   app.use(cookieParser());
