@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://atmegaflix.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -21,6 +22,7 @@
     "react-toastify": "^9.0.8",
     "tailwind-scrollbar": "^2.1.0-preview.0",
     "typescript": "^4.8.4",
+    "url-parse": "^1.5.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/url-parse": "^1.4.8",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.17",
     "tailwindcss": "^3.1.8"
