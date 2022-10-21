@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import ListOfMovies from "./listOfMovies";
 import { Carousel } from 'react-responsive-carousel';
 import Copyright from "./copyright";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import requests from "../utils/MoviesUrls.util";
+import ListOfMovies from './listOfMovies';
 
 interface movie {
     backdrop_path: string,
     id: number;
+    genre_ids:number[];
 }
 
 const Movies:React.FC = () => {
@@ -119,21 +120,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel2div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel2div2Movies.map((movie:movie) => {
-                                    return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel2div3Movies.map((movie:movie) => {
-                                    return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -145,21 +146,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel1div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel1div2Movies.map((movie:movie) => {
-                                return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel1div3Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -171,21 +172,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel3div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel3div2Movies.map((movie:movie) => {
-                                    return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel3div3Movies.map((movie:movie) => {
-                                    return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -197,21 +198,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel4div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel4div2Movies.map((movie:movie) => {
-                                    return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel4div3Movies.map((movie:movie) => {
-                                    return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -223,21 +224,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel5div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel5div2Movies.map((movie:movie) => {
-                                return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel5div3Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -249,21 +250,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel6div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel6div2Movies.map((movie:movie) => {
-                                    return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel6div3Movies.map((movie:movie) => {
-                                    return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -275,21 +276,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel7div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel7div2Movies.map((movie:movie) => {
-                                    return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel7div3Movies.map((movie:movie) => {
-                                    return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                    return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
@@ -301,21 +302,21 @@ const Movies:React.FC = () => {
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel8div1Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel8div2Movies.map((movie:movie) => {
-                                return <ListOfMovies key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids} key={movie.id} imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
                     <div className="flex gap-[1%] flex-row">
                         {
                             carousel8div3Movies.map((movie:movie) => {
-                                return <ListOfMovies  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
+                                return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} />
                             })
                         }
                     </div>
