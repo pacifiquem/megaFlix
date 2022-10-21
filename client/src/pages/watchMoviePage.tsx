@@ -4,10 +4,9 @@ import Url from 'url-parse';
 import aboutUrl from '../utils/aboutMovies';
 import axios from 'axios';
 import ListOfMovies from '../components/listOfMovies';
-import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 
-const WatchMovie = () => {
+const WatchMovie:React.FC = () => {
 
     const url = new Url(window.location.href, {
         parse: true
