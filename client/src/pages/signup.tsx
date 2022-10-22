@@ -6,14 +6,12 @@ import {FiUser} from 'react-icons/fi';
 import background from '../assets/images/background.png';
 import logo from '../assets/images/logo.png';
 import Copyright from '../components/copyright';
-
+import { Navigate } from 'react-router-dom';
 
 
 const Signup:React.FC = () => {
 
-    const header = {
-        'Access-Control-Allow-Origin' : 'atmegaflix.vercel.app'
-    }
+    const [navigate, setNavigate] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -25,8 +23,6 @@ const Signup:React.FC = () => {
                 username,
                 email, 
                 password
-            },{
-                headers:header
             }).then((response) => {
                 console.log(response);
             }).catch((error) => {
@@ -54,7 +50,8 @@ const Signup:React.FC = () => {
                         <input type="password" value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder='Password' required autoComplete='true' className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
                     </div>
                     <button type='submit' className=' bg-red-600 w-[100%] h-[15%] font-sans font-semibold text-white text-2xl rounded'>Sign Up</button>
-                    <p className='text-[#4e4e4e] mt-12 text-lg'>not New To Netflix ? <span className='text-white hover:cursor-pointer'>Sign In</span></p>
+                    <p className='text-[#4e4e4e] mt-12 text-lg'>not New To Netflix ? <span className='text-white hover:cursor-pointer' onClick={() => setNavigate(!navigate)}>Sign In</span></p>
+                    {navigate && <Navigate replace to='/signin' />}
                     <p className='text-[#4e4e4e] mt-2'>This page is protected by reCAPTCHA to ensure you are not a bot .</p>
                 </form>
             </div>

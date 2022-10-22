@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BiLock } from 'react-icons/bi';
-import {FiUser} from 'react-icons/fi';
+import { Navigate } from 'react-router-dom';
 import background from '../assets/images/background.png';
 import logo from '../assets/images/logo.png';
 import Copyright from '../components/copyright';
@@ -9,6 +9,9 @@ import Copyright from '../components/copyright';
 
 
 const SignIn:React.FC = () => {
+
+    const [navigate, setNavigate] = useState(false);
+
     return (
         <div className="container bg-cover w-full h-[100vh] p-8" style={{backgroundImage : `linear-gradient(to top,rgba(0,0,0,.6)0, rgba(0,0,0,.5)60%, rgba(0,0,0,.5)70%, rgba(0,0,0,.6)100%), url(${background})`}}>
         <img src={logo} alt="Megaflix logo" />
@@ -24,7 +27,8 @@ const SignIn:React.FC = () => {
                     <input type="password" placeholder='Password' required className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
                 </div>
                 <button type='submit' className=' bg-red-600 w-[100%] h-[15%] font-sans font-semibold text-white text-2xl rounded'>Sign In</button>
-                <p className='text-[#4e4e4e] mt-12 text-lg'>New To Netflix ? <span className='text-white hover:cursor-pointer'>Sign Up</span></p>
+                <p className='text-[#4e4e4e] mt-12 text-lg'>New To Netflix ? <span className='text-white hover:cursor-pointer' onClick={() => setNavigate(!navigate)}>Sign Up</span></p>
+                {navigate && <Navigate replace to='/signup' />}
                 <p className='text-[#4e4e4e] mt-2'>This page is protected by reCAPTCHA to ensure you are not a bot .</p>
             </form>
         </div>

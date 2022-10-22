@@ -36,7 +36,7 @@ const WatchMovie:React.FC = () => {
             response.data.results ? setRelatedMovies(response.data.results.slice(0, 3)) : console.log('results not found');
         });
 
-    }, [movie_url]);
+    }, []);
 
     return (
         <div>
