@@ -1,5 +1,14 @@
-import { Controller, Get, Post, Put, Param, Res, Body } from '@nestjs/common';
-import { Response } from 'express';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Req,
+  Res,
+  Body,
+} from '@nestjs/common';
+import { Response, Request } from 'express';
 import { UsersService } from './users.service';
 import {
   newUserDTO,
@@ -15,8 +24,16 @@ export class UsersController {
   constructor(private readonly UsersServices: UsersService) {}
 
   @Post('/signup')
-  async newUser(@Body() usersCredentials: newUserDTO) {
-    return this.UsersServices.addnewuser(usersCredentials);
+  async newUser(
+    @Body() usersCredentials: newUserDTO,
+    @Res() response: Response,
+  ) {
+    const usersServiceResponse: any = await this.UsersServices.addnewuser(
+      usersCredentials,
+    );
+    response.status(usersServiceResponse.status).json({
+      usersServiceResponse,
+    });
   }
 
   @Post('/login')
