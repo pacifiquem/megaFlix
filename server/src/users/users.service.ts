@@ -28,6 +28,7 @@ export class UsersService {
       if (newuser) {
         this.response = {
           success: true,
+          status: 201,
           data: {
             username: newuser.username,
             email: newuser.email,
@@ -37,6 +38,7 @@ export class UsersService {
         return this.response;
       } else {
         this.response = {
+          status: 400,
           success: false,
           message: 'not inserted to db',
         };
@@ -45,6 +47,7 @@ export class UsersService {
       }
     } catch (error) {
       return {
+        status: 400,
         success: false,
         message: error.message,
       };
