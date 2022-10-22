@@ -7,27 +7,72 @@ import background from '../assets/images/background.png';
 import logo from '../assets/images/logo.png';
 import Copyright from '../components/copyright';
 import { Navigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Signup:React.FC = () => {
 
     const [navigate, setNavigate] = useState(false);
+    const [navigateToHome, setNavigateHome] = useState(false);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const formHandler = (event:any) => {
         event.preventDefault();
+
+        const showError = (errormessage: any) => {
+            return toast.error(`${errormessage}`, {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+
         if(username !== null && email !== null && password !== null) {
-            axios.post('https://atmegaflix.herokuapp.com/user/signup' , {
+            axios.post('http://localhost:1500/users/signup' , {
                 username,
                 email, 
                 password
             }).then((response) => {
                 console.log(response);
+                if(response.status === 201) {
+                    setNavigateHome(!navigateToHome);
+                }
             }).catch((error) => {
                 console.log(error);
-            })
+                if(error.response.data?.usersServiceResponse?.message === `E11000 duplicate key error collection: users.users index: email_1 dup key: { email: "${email}" }`) {
+                    showError('Email already taken');
+                }else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too long password`) {
+                    showError('Username is too short');
+                    showError('Password is too long');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too short password`) {
+                    showError('Username is too long');
+                    showError('Password is too short');
+                }  else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too short password`) {
+                    showError('Username is too short');
+                    showError('Password is too short');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too long password`) {
+                    showError('Username is too long');
+                    showError('Password is too long');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username`) {
+                    showError('Username is too long');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username`) {
+                    showError('Username is too short');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: password: Too long password`) {
+                    showError('Passowrd is too long');
+                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: password: Too short password`) {
+                    showError('Password is too short');
+                }else {
+                    showError(error.response.statusText);
+                }
+            });
         }
     }
 
@@ -47,19 +92,19 @@ const Signup:React.FC = () => {
                     </div>
                     <div className='w-[100%] h-[13%] flex flex-row bg-red-600 mb-6 rounded'>     
                         <BiLock className='w-[15%] h-[60%]  mt-3' />
-                        <input type="password" value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder='Password' required autoComplete='true' className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
+                        <input type="password" value={password} minLength={6} maxLength={15} onChange={(e) => {setPassword(e.target.value)}} placeholder='Password' required autoComplete='true' className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
                     </div>
                     <button type='submit' className=' bg-red-600 w-[100%] h-[15%] font-sans font-semibold text-white text-2xl rounded'>Sign Up</button>
+                    {navigateToHome && <Navigate replace to='/home' />}
                     <p className='text-[#4e4e4e] mt-12 text-lg'>not New To Netflix ? <span className='text-white hover:cursor-pointer' onClick={() => setNavigate(!navigate)}>Sign In</span></p>
                     {navigate && <Navigate replace to='/signin' />}
                     <p className='text-[#4e4e4e] mt-2'>This page is protected by reCAPTCHA to ensure you are not a bot .</p>
                 </form>
+                <ToastContainer closeOnClick pauseOnFocusLoss newestOnTop={false} />
             </div>
             <Copyright />
         </div>
     );
 }
-
-
 
 export default Signup;
