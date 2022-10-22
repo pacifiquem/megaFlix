@@ -19,6 +19,7 @@ const ListOfMovies:React.FC <props> = (props) => {
     const [url] = useState(`/watch?id=${props.id}&genre=${props.type[0]}`);
 
     const sendToWatchMovie = () => {
+        console.log(navigate);
         setNavigate(!navigate);
     }
 
