@@ -12,7 +12,7 @@ const Home:React.FC = () => {
     const [sendToLogin, setSendToLogin] = useState(false);
 
     const isLoggedIn = () => {
-        if(cookie.get('token') === null || cookie.get('token') === undefined) {
+        if(cookie.get('token') === null && cookie.get('token') === undefined) {
             setSendToLogin(!sendToLogin);
         }else {
             return;
