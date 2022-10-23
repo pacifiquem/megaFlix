@@ -9,7 +9,7 @@ import Copyright from '../components/copyright';
 import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import useCookies from 'react-cookie/cjs/useCookies';
 
 const Signup:React.FC = () => {
 
@@ -18,6 +18,7 @@ const Signup:React.FC = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [cookies, setCookie] = useCookies(['token']);
 
     const formHandler = (event:any) => {
         event.preventDefault();
@@ -41,12 +42,11 @@ const Signup:React.FC = () => {
                 email, 
                 password
             }).then((response) => {
-                console.log(response);
                 if(response.status === 201) {
+                    setCookie('token', response.data.usersServiceResponse.data.token);
                     setNavigateHome(!navigateToHome);
                 }
             }).catch((error) => {
-                console.log(error);
                 if(error.response.data?.usersServiceResponse?.message === `E11000 duplicate key error collection: users.users index: email_1 dup key: { email: "${email}" }`) {
                     showError('Email already taken');
                 }else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too long password`) {
@@ -95,7 +95,7 @@ const Signup:React.FC = () => {
                         <input type="password" value={password} minLength={6} maxLength={15} onChange={(e) => {setPassword(e.target.value)}} placeholder='Password' required autoComplete='true' className='w-[85%] h-[100%] outline-none px-8 rounded-r'/>
                     </div>
                     <button type='submit' className=' bg-red-600 w-[100%] h-[15%] font-sans font-semibold text-white text-2xl rounded'>Sign Up</button>
-                    {navigateToHome && <Navigate replace to='/home' />}
+                    {navigateToHome && <Navigate replace to='/home/?tab=welcome' />}
                     <p className='text-[#4e4e4e] mt-12 text-lg'>not New To Netflix ? <span className='text-white hover:cursor-pointer' onClick={() => setNavigate(!navigate)}>Sign In</span></p>
                     {navigate && <Navigate replace to='/signin' />}
                     <p className='text-[#4e4e4e] mt-2'>This page is protected by reCAPTCHA to ensure you are not a bot .</p>
