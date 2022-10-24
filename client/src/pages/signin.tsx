@@ -41,7 +41,9 @@ const SignIn:React.FC = () => {
                 password
             }).then((response) => {
                 if(response.data.data.success === true) {
-                    setCookie('token', response.data.data.data);
+                    setCookie('token', response.data.data.data, {
+                        expires: new Date(new Date().setDate(new Date().getDate() + 30))
+                    });
                     setNomeNavigate(!homeNavigate);
                 }else {
                     showError('Invalid email or password');

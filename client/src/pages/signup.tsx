@@ -43,7 +43,9 @@ const Signup:React.FC = () => {
                 password
             }).then((response) => {
                 if(response.status === 201) {
-                    setCookie('token', response.data.usersServiceResponse.data.token);
+                    setCookie('token', response.data.usersServiceResponse.data.token, {
+                        expires: new Date(new Date().setDate(new Date().getDate() + 30))
+                    });
                     setNavigateHome(!navigateToHome);
                 }
             }).catch((error) => {
