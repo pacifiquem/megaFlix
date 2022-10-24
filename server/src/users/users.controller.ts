@@ -47,7 +47,7 @@ export class UsersController {
     });
   }
 
-  @Get('/issignedup')
+  @Post('/issignedup')
   async isSignedUp(@Body() usersCredentials: getUserbyEmailDTO) {
     return this.UsersServices.getUserbyEmail(usersCredentials);
   }
