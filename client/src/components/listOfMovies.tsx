@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import {
     Navigate,
   } from 'react-router-dom';
-import aboutMovies from '../utils/aboutMovies';
 
 interface props {
     imageUrl: string,
@@ -19,7 +17,6 @@ const ListOfMovies:React.FC <props> = (props) => {
     const [url] = useState(`/watch?id=${props.id}&genre=${props.type[0]}`);
 
     const sendToWatchMovie = () => {
-        console.log(navigate);
         setNavigate(!navigate);
     }
 
