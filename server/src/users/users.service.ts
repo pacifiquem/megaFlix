@@ -26,12 +26,14 @@ export class UsersService {
 
       const newuser = await this.UserModel.create(usersCredentials);
       if (newuser) {
+        const token = await jwtFunctions.jwtTokenGenerator(newuser);
         this.response = {
           success: true,
           status: 201,
           data: {
             username: newuser.username,
             email: newuser.email,
+            token: token,
           },
         };
 
