@@ -13,11 +13,11 @@ const DefaultMovie:React.FC = () => {
     const [name, setName] = useState('');
     const [overview, setOverview] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const [randomNumber, setRandomNumber]  = useState(Math.floor(Math.random() * (20 - 0) + 0));
-    const [MovieRandomIndex, setMovieRandomIndex] = useState(Math.floor(Math.random() * (2 - 0) + 0));
+    const [randomNumber]  = useState(Math.floor(Math.random() * (20 - 0) + 0));
+    const [MovieRandomIndex] = useState(Math.floor(Math.random() * (2 - 0) + 0));
 
     useEffect(() => {
-        const movies = axios.get(MovieRequests[MovieRandomIndex]).then((response) => {
+        axios.get(MovieRequests[MovieRandomIndex]).then((response) => {
             response.data.results[randomNumber].title ? setName(response.data.results[randomNumber].title) : setName(response.data.results[randomNumber].name);
             setOverview(response.data.results[randomNumber].overview);
             setImageUrl(`https://image.tmdb.org/t/p/original${response.data.results[randomNumber].backdrop_path}`);
