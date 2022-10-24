@@ -10,6 +10,7 @@ import { Navigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCookies from 'react-cookie/cjs/useCookies';
+import usersUrls from '../utils/usersBaseUrl';
 
 const Signup:React.FC = () => {
 
@@ -20,24 +21,24 @@ const Signup:React.FC = () => {
     const [password, setPassword] = useState('');
     const [cookies, setCookie] = useCookies(['token']);
 
+    const showError = (errormessage: any) => {
+        return toast.error(`${errormessage}`, {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
     const formHandler = (event:any) => {
         event.preventDefault();
 
-        const showError = (errormessage: any) => {
-            return toast.error(`${errormessage}`, {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-
         if(username !== null && email !== null && password !== null) {
-            axios.post('http://localhost:1500/users/signup' , {
+            axios.post(`${usersUrls.baseUrl}/signup` , {
                 username,
                 email, 
                 password
@@ -49,30 +50,34 @@ const Signup:React.FC = () => {
                     setNavigateHome(!navigateToHome);
                 }
             }).catch((error) => {
-                if(error.response.data?.usersServiceResponse?.message === `E11000 duplicate key error collection: users.users index: email_1 dup key: { email: "${email}" }`) {
+                if(error?.response?.data?.usersServiceResponse?.message === `E11000 duplicate key error collection: users.users index: email_1 dup key: { email: "${email}" }`) {
                     showError('Email already taken');
-                }else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too long password`) {
+                }else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too long password`) {
                     showError('Username is too short');
                     showError('Password is too long');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too short password`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too short password`) {
                     showError('Username is too long');
                     showError('Password is too short');
-                }  else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too short password`) {
+                }  else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too short username, password: Too short password`) {
                     showError('Username is too short');
                     showError('Password is too short');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too long password`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too long username, password: Too long password`) {
                     showError('Username is too long');
                     showError('Password is too long');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too long username`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too long username`) {
                     showError('Username is too long');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: username: too short username`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: username: too short username`) {
                     showError('Username is too short');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: password: Too long password`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: password: Too long password`) {
                     showError('Passowrd is too long');
-                } else if(error.response.data?.usersServiceResponse?.message === `User validation failed: password: Too short password`) {
+                } else if(error?.response?.data?.usersServiceResponse?.message === `User validation failed: password: Too short password`) {
                     showError('Password is too short');
                 }else {
-                    showError(error.response.statusText);
+                    if(error?.response?.data?.usersServiceResponse?.statusText  === undefined) {
+                        showError(error.message);
+                    }else {
+                        showError(error?.response?.statusText);
+                    }
                 }
             });
         }

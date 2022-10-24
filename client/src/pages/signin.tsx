@@ -8,7 +8,7 @@ import logo from '../assets/images/logo.png';
 import Copyright from '../components/copyright';
 import {toast, ToastContainer} from 'react-toastify';
 import { useCookies } from 'react-cookie';
-
+import usersUrls from '../utils/usersBaseUrl';
 
 
 const SignIn:React.FC = () => {
@@ -36,7 +36,7 @@ const SignIn:React.FC = () => {
         e.preventDefault();
         
         if(email !== null && password !== null) {
-            axios.post('http://localhost:1500/users/login', {
+            axios.post(`${usersUrls.baseUrl}/login`, {
                 email, 
                 password
             }).then((response) => {
