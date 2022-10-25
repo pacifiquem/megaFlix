@@ -59,7 +59,7 @@ const WatchMovie:React.FC = () => {
                     <div className='w-[75%] text-center bg-[#ffffff1f] mb-1 text-white text-2xl rounded-md border-solid border-white'>Related Movies</div>
                     {
                         related_movies.map((movie:any) => {
-                            return <ListOfMovies type={movie.genre_ids}  key={movie.id}  imageUrl={movie.backdrop_path} id={movie.id} width="75%" height='23vh' />
+                            return <ListOfMovies type={movie.genre_ids}  key={movie.id} overview={movie.overview}  imageUrl={movie.backdrop_path} id={movie.id} width="75%" height='23vh' />
                         })
                     }
                 </div>

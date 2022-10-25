@@ -4,17 +4,18 @@ import {
   } from 'react-router-dom';
 
 interface props {
-    imageUrl: string,
-    id:Number,
-    type:number[],
-    width ?: string,
-    height ?: string,
+    imageUrl: string;
+    id:Number;
+    type:number[];
+    width ?: string;
+    height ?: string;
+    overview ?: string;
 }
 
 const ListOfMovies:React.FC <props> = (props) => {
 
     const [navigate, setNavigate] = useState(false);
-    const [url] = useState(`/watch?id=${props.id}&genre=${props.type[0]}`);
+    const [url] = useState(`/watch?id=${props.id}&genre=${props.type[0]}&overview=${props?.overview}`);
 
     const sendToWatchMovie = () => {
         setNavigate(!navigate);

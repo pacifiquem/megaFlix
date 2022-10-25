@@ -9,9 +9,9 @@ const Nav:React.FC = () => {
 
     const changeBackground = () => {
         if (window.scrollY !== 0) {
-            navDivRef.current?.classList.replace('bg-[#ffffff00]','bg-[rgba(0,0,0,0.6)]');
+            navDivRef.current?.classList.replace('bg-[#ffffff00]','bg-[rgba(0,0,0,0.9)]');
         } else {
-            navDivRef.current?.classList.replace('bg-[rgba(0,0,0,0.6)]','bg-[#ffffff00]');
+            navDivRef.current?.classList.replace('bg-[rgba(0,0,0,0.9)]','bg-[#ffffff00]');
         }
       }
 
