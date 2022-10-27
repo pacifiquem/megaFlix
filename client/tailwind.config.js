@@ -15,7 +15,7 @@ module.exports = {
     gap: {
       "logo-sign":"68%"
     },
-
+    
     extend: {},
   },
   plugins: [

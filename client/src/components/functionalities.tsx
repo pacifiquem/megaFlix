@@ -5,10 +5,10 @@ import kidsImage from '../assets/images/kidsImage.png';
 
 export const EnjoyOnYourTv:React.FC = () => {
     return (
-        <div className="w-[100vw] h-[60vh] border-b-8 border-[#272525] flex flex-row">
+        <div className="w-[100vw] h-[60vh] border-b-8 border-[#272525] flex flex-col md:flex-row">
             <div className=' w-[50%] h-[100%] flex justify-center items-center'>
-                <div className=" text-white w-[60%]">
-                    <h1 className="mb-8 text-5xl font-semibold">Enjoy on your TV.</h1>
+                <div className=" text-white w-[100%] md:w-[60%]">
+                    <h1 className="mb-8 text-5xl font-semibold text-center md:text-start">Enjoy on your TV.</h1>
                     <h2 className="text-2xl font-normal my-3">Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</h2>
                 </div>
             </div>
