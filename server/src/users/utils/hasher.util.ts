@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 
 const hasher = async (string: string | number): Promise<string> => {
   const saltRounds = 10;
