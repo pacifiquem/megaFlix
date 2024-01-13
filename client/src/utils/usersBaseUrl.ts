@@ -1,5 +1,5 @@
 const usersUrls = {
-    baseUrl: 'https://atmegaflix.herokuapp.com/users'
+    baseUrl: 'https://backend-services-megaflix.onrender.com/users'
 }
 
 export default usersUrls;
